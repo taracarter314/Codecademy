@@ -8,15 +8,17 @@ total_price = 0
 
 for cost in prices:
   total_price += cost
-  average_price = total_price / len(prices) 
-  print("Average Haircut Price:", average_price)
-  new_price = [price - 5 for price in prices]
-  print(new_price)
+  
+average_price = total_price / len(prices) 
+print("Average Haircut Price:", average_price) 
 
-  total_revenue = 0
-  for i in range(len(hairstyles)):
-    total_revenue = prices[i] + last_week[i]
-    print("Total Revenue:", total_revenue)
+new_price = [price - 5 for price in prices]
+print(new_price)
+
+total_revenue = 0
+for i in range(len(hairstyles)):
+  total_revenue = prices[i] * last_week[i]
+  print("Total Revenue:", total_revenue)
 
 average_daily_revenue = total_revenue / 7
 print(average_daily_revenue)
