@@ -1,8 +1,8 @@
-rom datetime import datetime as dt
+from datetime import datetime as dt
 from decimal import Decimal
 from random import choice
 from random import randint
-import custom_module
+import custom_module.py
 # prints the current date and time
 print(dt.today().date())
 print(dt.today().time())
