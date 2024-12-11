@@ -1,3 +1,5 @@
+# something to remember when you are creating variable as part of the class (not the methods), and test print statements, they line up with the class variable and HAVE to follow any methods for the flow of the code to work. That is why chunks of code are out of order from when the task was listed in the project. 
+
 # Part One - Making the Menus
 
 # task 1 - create Menu class
@@ -13,16 +15,13 @@ class Menu:
 # Task 7 - Give our Menu class a string representation method that will tell you the name of the menu. Also, indicate in this representation when the menu is available.
   def __repr__(self): # string representation
     return self.name + " menu available from " + str(self.start_time) + "hr to " + str(self.end_time) + "hr."
-# Task 8 Try out our string representation. If you call print(brunch)
-    brunch = Menu("brunch", items, 11, 16) # creates the brunch variable
-    print(brunch)
 
 # Task 9  Give Menu a method .calculate_bill() that has two parameters: self, and purchased_items. 
   def calculate_bill(self, purchased_items):
     # Task 9 part 2 - Have calculate_bill return the total price of a purchase consisiting of all the items in purchased_items:
     total = 0 # so each item purchased can be added to the calculated bill
     for i in purchased_items: #iterating through list gives us the full availability of the list
-      total += self.items.get(i, 0) # updates the total price and allows us to select which key value pairs needed for the calculated_bill
+      total += self.items.get(i, 0) # updates the total price and allows us to select which key value pairs needed for the calculated_bill and in cases where an item is not found in the menu using get() with a default value will help to not create an error.
     return total #returns calculated_bill's total
 
 # Task 3 Let’s create our first menu: brunch. Brunch is served from 11am to 4pm.
@@ -41,6 +40,10 @@ dinner = Menu("dinner", items3, 17, 23)
 # Task 6 - And let’s create our last menu, kids. The kids menu is available from 11am until 9pm. 
 items4 = {'chicken nuggets': 6.50, 'fusilli with wild mushrooms': 12.00, 'apple juice': 3.00}
 kids = Menu("kids", items4, 11, 21)
+
+# Task 8 Try out our string representation. If you call print(brunch)
+brunch = Menu("brunch", items, 11, 16) # creates the brunch variable
+print(brunch)
 
 # Task 10 - Test out Menu.calculate_bill(). We have a breakfast order for one order of pancakes, one order of home fries, and one coffee. Pass that into brunch.calculate_bill() and print out the price.
 print("The price of a breakfast order for one order of pancakes, one order of home fries, and one coffee is: " + str(brunch.calculate_bill(['pancakes', 'home fries', 'coffee']))) # adds the values together because of the +
@@ -62,13 +65,15 @@ class Franchise:
   def __repr__(self):
     return "the address of the restaurant is: " + self.address
 
-# Task 16 - Give Franchise an .available_menus() method that takes in a time parameter and returns a list of the Menu objects that are available at that time.    
-  def available_menus(self, time):
+# Task 16 - Give Franchise an .available_menus() method that takes in a time parameter and returns a list of the Menu objects that are available at that time.  
+# Method to return available menus based on the provided time  
+  def available_menus(self, time): 
     menu_list = []
     for menu in self.menus:
       if time >= menu.start_time and time <= menu.end_time:
         menu_list.append(menu)
     return menu_list
+    # list comprehension option - return [menu for menu in self.menus if time >= menu.start_time and time <= menu.end_time]
     
 # Task 14 - create the franchise variables and pass in all four menus along with these addresses to define flagship_store and new_installment.
 flagship_store = Franchise("1232 West End Road", [brunch, early_bird, dinner, kids])
