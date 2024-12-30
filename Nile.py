@@ -93,3 +93,4 @@ trip2 = Trip(150, driver2)
 # Calculate money made  
 total_money_made = calculate_money_made(trip1=trip1, trip2=trip2)  
 print(f"Total money made: {total_money_made}")
+
