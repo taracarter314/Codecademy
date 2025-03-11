@@ -137,18 +137,18 @@ unittest.main()
 # alerts testing
 
 import unittest
-import alerts
+import Alerts
 
 # Checkpoint 1
 class SystemAlertTests(unittest.TestCase):
     
   # Checkpoint 2
   def test_power_outage_alert(self):
-    self.assertRaises(alerts.PowerError, alerts.power_outage_detected, True)
+    self.assertRaises(Alerts.PowerError, Alerts.power_outage_detected, True)
     
   # Checkpoint 3
   def test_water_levels_warning(self):
-    self.assertWarns(alerts.WaterLevelWarning, alerts.water_levels_check, 150)
+    self.assertWarns(Alerts.WaterLevelWarning, Alerts.water_levels_check, 150)
 
 unittest.main()
 
@@ -175,7 +175,7 @@ unittest.main()
 
 #tests for passenger check-in
 import unittest
-import kiosk
+import Kiosk
 
 class CheckInKioskTests(unittest.TestCase):
 
@@ -188,14 +188,14 @@ class CheckInKioskTests(unittest.TestCase):
   # Write your code below:
   @classmethod
   def setUpClass(cls):
-    kiosk.power_on_kiosk()
+    Kiosk.power_on_kiosk()
 
   @classmethod
   def tearDownClass(cls):
-    kiosk.power_off_kiosk()
+    Kiosk.power_off_kiosk()
   
   def setUp(self):
-    kiosk.return_to_welcome_page()
+    Kiosk.return_to_welcome_page()
     
 
 unittest.main()
@@ -205,7 +205,7 @@ unittest.main()
 import unittest
 import entertainment
 
-class EntertainmentSystemTests(unittest.TestCase):
+class entertainmentSystemTests(unittest.TestCase):
   # Checkpoint 1
   @unittest.skipIf(entertainment.regional_jet(), 'Not available on regional jets')
   def test_movie_license(self):
