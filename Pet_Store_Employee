@@ -1,0 +1,81 @@
+# Exercise 1
+sku_list = [7046538, 8289407, 9056375, 2308597]
+
+# checkpoint 1 - Use dir() on sku_list and print out the result. 
+print(dir(sku_list))
+
+# checkpoint 2 - Create a variable called sku_iterator_object_one that is equal to calling .__iter__() on sku_list. Lastly, print sku_iterator_object_one
+sku_iterator_object_one = sku_list.__iter__()
+print(sku_iterator_object_one)
+
+#checkpoint 3 - Create a variable called sku_iterator_object_two that is equal to calling iter() on sku_list. Lastly, print sku_iterator_object_two!
+sku_iterator_object_two = iter(sku_list)
+print(sku_iterator_object_two)
+
+# Exercise 2
+
+dog_foods = {
+  "Great Dane Foods": 4,
+  "Min Pip Pup Foods": 10,
+  "Pawsome Pup Foods": 8
+}
+
+# Checkpooint 1 - create a variable called dog_food_iterator that stores the value of calling iter() on our iterable dog_foods.
+dog_food_iterator = iter(dog_foods)
+
+# Checkpoint 3 - etrieve the first value of the dog_food_iterator using the built-in function next() and set it to a variable called next_dog_food1. Print next_dog_food1 to see the result.
+next_dog_food1 = next(dog_food_iterator)
+print(next_dog_food1) 
+
+# Checkpoint 4 -mRetrieve the next two values of the dog_food_iterator using the __next__() method and set them to the variables next_dog_food2 and next_dog_food3. Print both variables to see the results!
+next_dog_food2 = dog_food_iterator.__next__()
+print(next_dog_food2)
+next_dog_food3 = dog_food_iterator.__next__() 
+print(next_dog_food3)
+
+# Exercise 3
+# Checkpoint 1 - Imagine we have a custom class called CustomerCounter that counts the number of customers in the store. Make this class iterable by first defining the __iter__() method. Within this method, initialize a class member called self.count that will keep count of the number of customers in the store.
+class CustomerCounter:
+  def __iter__(self):
+    self.count = 0
+    return self
+
+# Checkpoint 2 - Next, define the __next__() method. Only 1 customer will enter at a time each time this __next__() method is called.
+  def __next__(self):
+    self.count +=1
+
+# Checkpoint 4 - If we were to iterate through the customer_counter object using a for loop now, we would get an infinite loop since our __next__() method has not raised a StopIteration exception.
+# Let’s fix this by moving on to Step 5 where we can raise this exception and prevent an infinite loop from occurring!
+# Checkpoint 5 - Modify the __next__() method to raise a StopIteration exception when our customer count is greater than 100.
+    if self.count > 100:
+      raise StopIteration
+    return self.count
+
+# Checkpoint 3 - Create a class instance customer_counter from the CustomerCounter class
+customer_counter = CustomerCounter()
+
+# Checkpoint 6 - Create a for loop to iterate through our CustomerCounter class object customer_counter. Print out each customer count value on each loop iteration.
+for customer_count in customer_counter:
+  print(customer_count)
+
+# Exercise 4
+# Checkpoint 1 - We have several 13.5lb bags of dog food to display. Our single shelving unit however can only hold a maximum of 1,000lbs. Let’s figure out how many bags of food we can display! First, import the itertools module at the top line of the code editor.
+import itertools
+max_capacity = 1000
+num_bags = 0
+
+# Checkpoint 2 - Next, initialize a for loop with a count() iterator that keeps track of the weight on the shelf.
+# Within the for loop body:
+# Provide a stop condition using max_capacity to terminate the loop
+# Increment num_bags on each iteration.
+for dog_food in itertools.count(start=13.5, step=13.5):
+  if dog_food >= 1000:
+    break
+  num_bags += 1
+
+# Checkpoint 3 - Print the num_bags result to see how many bags will fit on the shelving unit.
+print(num_bags)
+
+
+
+
