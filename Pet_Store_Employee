@@ -76,6 +76,59 @@ for dog_food in itertools.count(start=13.5, step=13.5):
 # Checkpoint 3 - Print the num_bags result to see how many bags will fit on the shelving unit.
 print(num_bags)
 
+# Exercise 5 - Use the chain() itertool set to a variable named all_skus_iterator to combine the SKU lists.
+import itertools
 
+great_dane_foods = [2439176, 3174521, 3560031]
+min_pin_pup_foods = [6821904, 3302083]
+pawsome_pup_foods = [9664865]
 
+all_skus_iterator = itertools.chain(great_dane_foods, min_pin_pup_foods, pawsome_pup_foods)
 
+# Checkpoint 2 - Using all_skus_iterator implement a for loop to output each SKU.
+for skus in all_skus_iterator:
+  print(skus)
+
+# Exercise 6 
+import itertools
+collars = ["Red-S","Red-M", "Blue-XS", "Green-L", "Green-XL", "Yellow-M"]
+
+# Checkpoint 1 - Use the combinations() itertool to do this. Set the returned iterator to a variable named collar_combo_iterator.
+collar_combo_iterator = itertools.combinations(collars , 3)
+
+# Checkpoint 2 - Using a for loop, print each item in collar_combo_iterator to see all the possible collar combinations.
+for combo in collar_combo_iterator:
+  print(combo)
+
+# Exercise 7 
+import itertools
+max_money = 15
+options = []
+
+# Checkpoint 1 - Create a list iterable from the table provided that contains tuples of (cat_toy, price). The list should be called cat_toys.
+cat_toys = [("laser", 1.99), ("fountain", 5.99), ("scratcher", 10.99), ("catnip", 15.99)]
+
+# Checkpoint 2 - Using iter(), create an iterator called cat_toy_iterator that retrieves the iterator for cat_toys
+cat_toy_iterator = iter(cat_toys)
+
+# Checkpoint 3 - Using four next() statements, print out each value in cat_toy_iterator.
+print(next(cat_toy_iterator))
+print(next(cat_toy_iterator))
+print(next(cat_toy_iterator))
+print(next(cat_toy_iterator))
+
+# Checkpoint 4 - First, import itertools at the top of the module. See above under checkpoint 1
+# Checkpoint 5 -  create a combinations() iterator called toy_combos to retrieve all combinations of 2 total toys from the cat_toys list.
+toy_combos = itertools.combinations(cat_toys, 2)
+
+# Checkpoint 6 - Uncomment all lines of the for loop. After the final line within the for loop, check if the price of cost_of_toy1 and cost_of_toy2 is less than or equal to max_money which is the max $15 the customer has to spend. If it is, add the tuple to the options list.
+for combo in toy_combos:
+  toy1 = combo[0]
+  cost_of_toy1 = toy1[1]
+  toy2 = combo[1]
+  cost_of_toy2 = toy2[1]
+  if cost_of_toy1 + cost_of_toy2 <= max_money:
+    options.append(combo)
+
+# Print the final options list
+print(options)
