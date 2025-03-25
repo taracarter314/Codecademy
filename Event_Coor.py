@@ -1,6 +1,6 @@
 guests = {}
 def read_guestlist(file_name):
-  text_file = open(file_name,'r')
+  text_file = open(file_name, 'r')
   while True:
     line_data = text_file.readline().strip().split(",")
     if len(line_data) < 2:
@@ -22,7 +22,7 @@ names = read_guestlist('guest_list.txt')
 for i in range(10):
   print(next(names))
 
-#prints the added name after the 10th name
+#iterates through the first 10 guests
 print(names.send(['Jane', 35]))
 
 #prints the rest of the names
@@ -42,7 +42,7 @@ def table_1():
 
 def table_2():
  for i in range(1, 6):
-    yield ("Beef", "Table 2", "{}".format(i))
+   yield ("Beef", "Table 2", "{}".format(i))
 
 def table_3():
   for i in range(1, 6):
@@ -50,9 +50,9 @@ def table_3():
 
 #combine the list of tables
 def tables():
-  yield from first_table()
-  yield from second_table()
-  yield from third_table()
+  yield from table_1()
+  yield from table_2()
+  yield from table_3()
 
 #create a function which yields a table 
 def assign_table(t):
